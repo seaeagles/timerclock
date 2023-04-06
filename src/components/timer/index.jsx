@@ -64,7 +64,7 @@ export default function Timer() {
                 <div id="timer-label">Session</div>
                 <div id="time-left">{formatTime(time)}</div>
             </div>
-            {/* <SessionLength
+            <SessionLength
                 length={sessionLengthRef.current}
                 onDecrement={handleSessionDecrement}
                 onIncrement={handleSessionIncrement}
@@ -73,7 +73,7 @@ export default function Timer() {
                 length={breakLengthRef.current}
                 onDecrement={handleBreakDecrement}
                 onIncrement={handleBreakIncrement}
-            /> */}
+            />
             <TimerControl 
             setTime={setTime}
             handleReset={handleReset} 
