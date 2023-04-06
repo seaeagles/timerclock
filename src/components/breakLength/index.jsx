@@ -6,8 +6,9 @@ export default function BreakLength() {
         <div>
             <div id="break-label">Break Length</div>
         
-            <button class="btn btn-primary" id="break-decrement" value="-"><img src={ArrowDown} alt="arrow down" /></button>
-            <button class="btn btn-primary" id="break-increment" value="+"><img src={ArrowUp} alt="arrow up" /></button>
+            <button className="btn btn-warning" id="break-decrement" value="-"><img src={ArrowDown} alt="arrow down" /></button>
+            <div id="break-length">5</div>
+            <button className="btn btn-warning" id="break-increment" value="+"><img src={ArrowUp} alt="arrow up" /></button>
         </div>
     )
 }

@@ -2,6 +2,8 @@ import { useState } from 'react'
 import clockLogo from '/clocklogo.svg'
 import './App.css'
 import BreakLength from './components/breakLength'
+import SessionLength from './components/sessionLength'
+import Timer from './components/timer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,10 +15,9 @@ function App() {
       </div>
       <h1>Time a Clock</h1>
       <BreakLength />
+      <SessionLength />
       <div className="card">
-        <button class="btn-primary" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <Timer />
       </div>
     </div>
   )
