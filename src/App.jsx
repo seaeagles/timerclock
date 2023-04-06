@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import clockLogo from '/clocklogo.svg'
 import './App.css'
 import BreakLength from './components/breakLength'
@@ -14,8 +14,16 @@ function App() {
           <img src={clockLogo} className="logo" alt="Clock logo" />
       </div>
       <h1>Time a Clock</h1>
-      <BreakLength />
-      <SessionLength />
+       <SessionLength
+                length={sessionLengthRef.current}
+                onDecrement={handleSessionDecrement}
+                onIncrement={handleSessionIncrement}
+            />
+            <BreakLength
+                length={breakLengthRef.current}
+                onDecrement={handleBreakDecrement}
+                onIncrement={handleBreakIncrement}
+            />
       <div className="card">
         <Timer />
       </div>
