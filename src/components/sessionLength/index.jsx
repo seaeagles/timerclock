@@ -1,6 +1,5 @@
 import ArrowUp from '/src/assets/arrow-up.svg';
 import ArrowDown from '/src/assets/arrow-down.svg';
-import Timer from '../timer';
 
 export default function SessionLength(props) {
     return (
