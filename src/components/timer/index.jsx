@@ -27,29 +27,34 @@ export default function Timer() {
         timeLeftRef.current = sessionLengthRef.current * 60;
         console.log('Session length changed:', sessionLengthRef.current)
         console.log('Time left:', timeLeftRef.current)
-      }, [time]);
+      }, [time, timeLeftRef]);
 
     useEffect(() => {
         let timerID = null;
 
-        if (isRunning && timeLeft > 0) {
+        if (isRunning && timeLeftRef.current > 0) {
             timerID = setInterval(() => {
-                setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+                setTimeLeft((prevTimeLeft) => {
+                  timeLeftRef.current = prevTimeLeft - 1
+                  return prevTimeLeft - 1;
+                });
             }, 1000);
-        } else if (!isRunning && timeLeft !== 0) {
+        } else if (!isRunning && timeLeftRef.current !== 0) {
             clearInterval(timerID);
-        } else if (timeLeft === 0) {
+        } else if (timeLeftRef.current === 0) {
             setIsRunning(false);
             setMode((prevMode) => (prevMode === 'session' ? 'break' : 'session'));
-            setTimeLeft((prevTimeLeft) =>
-                prevMode === 'session' ? breakLengthRef.current * 60 : sessionLengthRef.current * 60
-            );
+            setTimeLeft((prevTimeLeft) => {
+                  timeLeftRef.current = prevTimeLeft - 1
+                  return prevTimeLeft - 1;
+                // prevMode === 'session' ? breakLengthRef.current * 60 : sessionLengthRef.current * 60
+            });
             setTime((prevTime) =>
                 prevMode === 'session' ? sessionLengthRef.current * 60 : breakLengthRef.current * 60
             );
         }
         return () => clearInterval(timerID);
-    }, [isRunning, timeLeft, mode]);
+    }, [isRunning, timeLeftRef.current, mode, sessionLengthRef, breakLengthRef]);
 
     const handleReset = () => {
         setTime(25 * 60);
