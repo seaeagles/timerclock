@@ -105,15 +105,17 @@ export default function Timer() {
     return (
         <div className="timer">
             <div className="timer-wrapper">
+              <div className="session-stuff column">
                 <div id="timer-label">Session</div>
                 <div id="time-left">{formatTime(time)}</div>
-            </div>
+                
             <SessionLength
                 length={sessionLengthRef.current}
                 onDecrement={handleSessionDecrement}
                 onIncrement={handleSessionIncrement}
                 sessionLengthRef={sessionLengthRef}
             />
+              </div>
             <BreakLength
                 length={breakLengthRef.current}
                 onDecrement={handleBreakDecrement}
@@ -132,6 +134,7 @@ export default function Timer() {
             timeLeftRef={timeLeftRef}
             sessionLengthRef={sessionLengthRef}
             />
+          </div>
         </div>
     )
 }
